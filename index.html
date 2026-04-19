@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubh Vivah | Gulshan & Monika</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --ivory: #f8f1e7;
+            --gold: #c9a646;
+            --gold-dark: #a68532;
+            --pink: #f5d0d5;
+            --pink-light: #fce8eb;
+            --text-main: #4a3b32;
+            --text-light: #735d4f;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: rgba(74, 59, 50, 0.08);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--ivory);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Utility Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-padding {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            /* Base static gradients */
+            background: radial-gradient(circle at 10% 20%, rgba(245, 208, 213, 0.5) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(201, 166, 70, 0.15) 0%, transparent 40%);
+        }
+
+        /* Abstract Floral Glows (CSS Art) */
+        .hero::before, .hero::after, .floral-glow {
+            content: '';
+            position: absolute;
+            filter: blur(40px);
+            z-index: -1;
+            animation: float 15s infinite ease-in-out alternate;
+        }
+
+        .hero::before {
+            width: 40vw;
+            height: 40vw;
+            background: linear-gradient(135deg, var(--pink), var(--pink-light));
+            top: -10%;
+            left: -10%;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Organic petal shape */
+        }
+
+        .hero::after {
+            width: 50vw;
+            height: 50vw;
+            background: linear-gradient(135deg, rgba(201, 166, 70, 0.2), rgba(245, 208, 213, 0.4));
+            bottom: -15%;
+            right: -10%;
+            border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
+            animation-delay: -5s;
+        }
+
+        .floral-glow {
+            width: 30vw;
+            height: 30vw;
+            background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+            50% { transform: rotate(10deg) translate(20px, -30px) scale(1.05); }
+            100% { transform: rotate(-5deg) translate(-10px, 20px) scale(0.95); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .hero-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 50px 30px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px var(--glass-shadow);
+            max-width: 600px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .shubh-vivah {
+            color: var(--gold-dark);
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .names {
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .names span {
+            color: var(--gold);
+            font-style: italic;
+            font-size: 2.8rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px 10px;
+            min-width: 80px;
+            box-shadow: 0 4px 15px var(--glass-shadow);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold-dark);
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .time-box label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .scroll-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold-dark);
+            border: 1px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scroll-btn:hover {
+            background: var(--gold);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(201, 166, 70, 0.3);
+        }
+
+        /* --- EVENTS SECTION --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .event-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-shadow: 0 8px 30px var(--glass-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(201, 166, 70, 0.15);
+        }
+
+        /* Decorative line inside cards */
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px dashed rgba(201, 166, 70, 0.4);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .event-title {
+            color: var(--gold-dark);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .event-detail {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .event-detail strong {
+            display: block;
+            color: var(--text-main);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        /* --- LOCATION SECTION --- */
+        .location-section {
+            background: linear-gradient(to bottom, var(--ivory), var(--pink-light));
+        }
+
+        .location-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px var(--glass-shadow);
+        }
+
+        .location-title {
+            font-size: 2rem;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(201, 166, 70, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 166, 70, 0.4);
+        }
+
+        /* --- THANK YOU SECTION --- */
+        .footer {
+            background-color: var(--ivory);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(201, 166, 70, 0.2);
+        }
+
+        .thank-you-msg {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .heart {
+            color: #d9534f;
+            display: inline-block;
+            animation: beat 1s infinite alternate;
+        }
+
+        @keyframes beat {
+            to { transform: scale(1.2); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .names { font-size: 2.5rem; }
+            .names span { font-size: 2rem; }
+            .hero-content { padding: 40px 20px; }
+            .time-box { min-width: 65px; padding: 10px; }
+            .time-box span { font-size: 1.5rem; }
+            .time-box label { font-size: 0.65rem; }
+            .section-padding { padding: 60px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .names { font-size: 2rem; }
+            .names span { font-size: 1.6rem; }
+            .countdown { gap: 8px; }
+            .time-box { min-width: 60px; padding: 10px 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="floral-glow"></div>
+        <div class="hero-content fade-in">
+            <h2 class="shubh-vivah">Shubh Vivah</h2>
+            <h1 class="names">Gulshan <span>&</span> Monika</h1>
+            <p class="subtitle">Together with their families invite you to celebrate their wedding</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+
+            <a href="#events" class="scroll-btn">Scroll Down</a>
+        </div>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section class="section-padding container" id="events">
+        <h2 class="serif" style="font-size: 2.5rem; margin-bottom: 20px; color: var(--gold-dark);">Wedding Events</h2>
+        <p style="color: var(--text-light); margin-bottom: 40px;">Join us in our celebrations</p>
+        
+        <div class="events-grid">
+            <!-- Shubh Lagan -->
+            <div class="event-card fade-in">
+                <h3 class="event-title">Shubh Lagan</h3>
+                <p class="event-detail">04 May 2026 (Monday)</p>
+                <p class="event-detail">Time: 5:00 PM</p>
+                <p class="event-detail"><strong>Venue:</strong><br>Paradise Garden, Sheetla Mata Mandir, Gurgaon</p>
+            </div>
+
+            <!-- Chak-Bhat & Haldi -->
+            <div class="event-card fade-in">
+                <h3 class="event-title">Chak-Bhat & Haldi</h3>
+                <p class="event-detail">05 May 2026 (Tuesday)</p>
+                <p class="event-detail">Time: 6:00 PM</p>
+                <p class="event-detail" style="color: transparent; user-select: none;"><strong>Venue:</strong><br>-</p> <!-- Spacing alignment -->
+            </div>
+
+            <!-- Wedding Ceremony -->
+            <div class="event-card fade-in">
+                <h3 class="event-title">Wedding Ceremony</h3>
+                <p class="event-detail">05 May 2026 (Wednesday)</p>
+                <p class="event-detail">Time: 5:00 PM</p>
+                <p class="event-detail"><strong>Venue:</strong><br>M.K Garden, Fatehpur Beri, Chhatarpur, New Delhi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section class="section-padding location-section" id="location">
+        <div class="container fade-in">
+            <div class="location-card">
+                <h2 class="location-title">Find Your Way</h2>
+                <p style="color: var(--text-light); margin-bottom: 10px;">Scan or visit location</p>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">We can't wait to see you there to bless our new beginning.</p>
+                <!-- Using a general maps search link for Chhatarpur as a placeholder -->
+                <a href="https://maps.google.com/?q=M.K+Garden,+Fatehpur+Beri,+Chhatarpur,+New+Delhi" target="_blank" rel="noopener noreferrer" class="btn-primary">Open in Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- THANK YOU SECTION -->
+    <footer class="footer">
+        <div class="container fade-in">
+            <h2 class="serif thank-you-msg">Your presence will make our day special <span class="heart">❤️</span></h2>
+            <p style="color: var(--text-light); margin-top: 15px; font-size: 0.9rem;">With love, <br> Gulshan & Monika</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- COUNTDOWN LOGIC ---
+        // Target Date: 05 May 2026, 5:00 PM (17:00:00)
+        const targetDate = new Date("May 05, 2026 17:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h3 class='serif' style='color: var(--gold); padding: 20px 0;'>The Wedding Day is Here!</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Add leading zeros
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        };
+
+        // Initial call and set interval
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+
+        // --- SCROLL ANIMATION (FADE IN) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once it's visible
+                }
+            });
+        }, observerOptions);
+
+        // Select all elements with the class 'fade-in'
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
